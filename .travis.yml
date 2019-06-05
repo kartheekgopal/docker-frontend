@@ -1,0 +1,9 @@
+sudo: required
+sevices:
+  - docker
+
+before_install:
+  - docker build -t kartheekgopal/docker-frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true kartheekgopal/docker-frontend npm run test -- --watchAll=false
